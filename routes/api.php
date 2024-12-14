@@ -13,7 +13,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
-// prefix
 Route::prefix('companies')->group(function () {
     Route::get('/', [CompanyController::class, 'index']);
     Route::prefix('{company_slug}')->group(function () {
