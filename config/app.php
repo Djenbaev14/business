@@ -206,10 +206,6 @@ return [
     'aliases' => Facade::defaultAliases()->merge([
         // 'Example' => App\Facades\Example::class,
         'Alert' => RealRashid\SweetAlert\Facades\Alert::class,
-<<<<<<< HEAD
-=======
-        'QRCode' => SimpleSoftwareIO\QrCode\Facades\QrCode::class,
->>>>>>> ad7da9f53347bfd5ee561a3a260da9b63cc10dc5
     ])->toArray(),
 
 ];

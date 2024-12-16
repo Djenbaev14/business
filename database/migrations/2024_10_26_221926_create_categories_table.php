@@ -22,15 +22,8 @@ return new class extends Migration
             $table->string('name_uz');
             $table->string('name_ru');
             $table->string('name_kr');
-<<<<<<< HEAD
             $table->string('slug')->unique();
             $table->string('photo');
-=======
-            $table->string('sequence_number');
-            $table->string('slug')->unique();
-            $table->string('photo');
-            $table->boolean('is_active')->default(1);
->>>>>>> ad7da9f53347bfd5ee561a3a260da9b63cc10dc5
             $table->softDeletes();
             $table->timestamps();
         });

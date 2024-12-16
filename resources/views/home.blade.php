@@ -1,6 +1,5 @@
 @extends('layouts.main')
 
-<<<<<<< HEAD
 @section('title', 'Dashboard')
 
 @section('content')
@@ -111,11 +110,9 @@
 	</div> 
 @endsection
 
-=======
 
 @section('content')
   <div class="content-body">
     
   </div>
 @endsection
->>>>>>> ad7da9f53347bfd5ee561a3a260da9b63cc10dc5

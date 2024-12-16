@@ -21,25 +21,36 @@ class CategoryController extends Controller
      */
     public function index($company_slug,$category_slug)
     {
-        try {
-            $company = new CompanyResource(Company::where('slug',$company_slug)->where('deleted_at',null)->firstOrFail());
+            $company =Company::where('slug',$company_slug)->where('deleted_at',null)->first();
+            if (!$company) {
+                return response()->json([
+                    'error' => 'Kompaniya topilmadi',
+                    'message' => 'Belgilangan kompaniya mavjud emas'
+                ], 404);
+            }
+            $category = $company->category()->where('slug',$category_slug)->where('deleted_at',null)->first();
+            if (!$category) {
+                return response()->json([
+                    'error' => 'Kategoriya topilmadi',
+                    'message' => 'Belgilangan kategoriya mavjud emas'
+                ], 404);
+            }
     
-            $category = new CategoryResource($company->category()->where('slug',$category_slug)->where('deleted_at',null)->firstOrFail());
-    
-            $products = $category->product()->where('is_active',1)->where('deleted_at',null)->orderBy('id','desc')->paginate(10); // Sahifada 10 ta mahsulot
-            ProductResource::collection(($products));
+            // $products = $category->product()->where('is_active',1)->where('deleted_at',null)->orderBy('id','desc')->paginate(10); // 
+            // ProductResource::collection(($products));
             
+            $products = $category->product()->where('is_active',1)->where('deleted_at',null)->orderBy('id','desc')->paginate(10);
+            if ($products->isEmpty()) {
+                $products = ['message' => 'Produktilar mavjud emas'];
+            } else {
+                ProductResource::collection(($products));
+            }
+
             return response()->json([
-                'company' => $company,
-                'category' => $category,
+                'company' => new CompanyResource($company),
+                'category' => new CategoryResource($category),
                 'products' => $products
             ]);
-        } catch (ModelNotFoundException $e) {
-            return response()->json([
-                'error' => 'Resource not found',
-                'message' => 'The specified company or category does not exist'
-            ], 404);
-        }
     }
 
     public function store(Request $request)

@@ -4,15 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Events\AttachmentEvent;
 use App\Models\Category;
-<<<<<<< HEAD
 use App\Models\Company;
 use App\Models\Product;
 use App\Models\Unit;
-=======
-use App\Models\Product;
-use App\Models\Unit;
-use App\Services\AttachmentService;
->>>>>>> ad7da9f53347bfd5ee561a3a260da9b63cc10dc5
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -21,12 +15,6 @@ class CategoryController extends Controller
     /**
      * Display a listing of the resource.
      */
-<<<<<<< HEAD
-=======
-    public function __construct(protected AttachmentService $attachmentService)
-    {
-    }
->>>>>>> ad7da9f53347bfd5ee561a3a260da9b63cc10dc5
     public function index(Request $request)
     {
         $company_id=auth()->user()->company->id;
@@ -34,11 +22,7 @@ class CategoryController extends Controller
         $select_categories=Category::where('company_id',$company_id)->where('deleted_at',null)->orderBy('id','desc')->get();
         $categories = Category::where('company_id',$company_id)->where('name_uz','LIKE','%'.$search.'%')->where('deleted_at',null)->orderBy('id', 'DESC')->paginate(10);
         $categories->appends(request()->query());
-<<<<<<< HEAD
         return view('pages.categories.index',compact('categories','search','select_categories'));
-=======
-        return view('pages.categories.index',compact('categories','select_categories'));
->>>>>>> ad7da9f53347bfd5ee561a3a260da9b63cc10dc5
     }
     public function create()
     {
@@ -54,12 +38,7 @@ class CategoryController extends Controller
             'name_uz' => 'required',
             'name_ru' => 'required',
             'name_kr' => 'required',
-<<<<<<< HEAD
             'photo'=>'required'
-=======
-            'photo'=>'required',
-            'sequence_number'=>'required'
->>>>>>> ad7da9f53347bfd5ee561a3a260da9b63cc10dc5
         ]);
         
         $file = $request->file('photo');
@@ -80,14 +59,9 @@ class CategoryController extends Controller
             $category->photo =  $fileName;
             $category->main_category_id =  ($request->main_category_id=="none") ? null : $request->main_category_id;
             $category->slug= $slug;
-<<<<<<< HEAD
             $category->save();
             
             event(new AttachmentEvent($request->photo, $category->icon(), 'categories'));
-=======
-            $category->sequence_number= $request->sequence_number;
-            $category->save();
->>>>>>> ad7da9f53347bfd5ee561a3a260da9b63cc10dc5
 
         return redirect()->route('categories.index')->with('success', 'Category created successfully');
     }

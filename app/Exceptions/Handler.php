@@ -27,8 +27,6 @@ class Handler extends ExceptionHandler
             //
         });
     }
-<<<<<<< HEAD
-=======
     public function render($request, $exception)
     {
         if ($exception instanceof \Spatie\Permission\Exceptions\UnauthorizedException) {
@@ -37,5 +35,4 @@ class Handler extends ExceptionHandler
 
         return parent::render($request, $exception);
     }
->>>>>>> ad7da9f53347bfd5ee561a3a260da9b63cc10dc5
 }

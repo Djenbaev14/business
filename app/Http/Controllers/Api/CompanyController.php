@@ -36,12 +36,29 @@ class CompanyController extends Controller
      */
     public function show($company_slug)
     {
-        $company = new ShowCompanyResource(Company::where('slug',$company_slug)->where('deleted_at',null)->first());
+        $company = Company::where('slug',$company_slug)->whereNull('deleted_at')->first();
+        if (!$company) {
+            return response()->json([
+                'error' => 'Kompaniya topilmadi',
+                'message' => 'Belgilangan kompaniya mavjud emas'
+            ], 404);
+        }
         
-        $category = CategoryResource::collection($company->category()->where('deleted_at',null)->orderBy('id','desc')->get());
-        $feedback = FeedbackResource::collection($company->feedback()->orderBy('id','desc')->get());
+        $category = $company->category()->whereNull('deleted_at')->orderBy('id','desc')->get();
+        if ($category->isEmpty()) {
+            $category = ['message' => 'Kompaniyaning kategoriyalari mavjud emas'];
+        } else {
+            $category = CategoryResource::collection($category);
+        }
+        $feedback = $company->feedback()->orderBy('id','desc')->get();
+        if ($feedback->isEmpty()) {
+            $feedback = ['message' => 'Mavjud emas'];
+        } else {
+            $feedback = FeedbackResource::collection($feedback);
+        }
+        
         return response()->json([
-            'company' => $company,
+            'company' => new ShowCompanyResource($company),
             'category' => $category,
             'feedback' => $feedback,
         ]);

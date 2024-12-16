@@ -10,16 +10,10 @@ use Illuminate\Support\Str;
 
 class SettingController extends Controller
 {
-<<<<<<< HEAD
     public function __construct(){
         // $this->middleware(['permission:company-list|company-edit|company-delete|company-create']);
         $this->middleware('check.role:Admin');
     }
-=======
-    // public function __construct(){
-    //     $this->middleware(['permission:setting-list|setting-edit|setting-delete|setting-create']);
-    // }
->>>>>>> ad7da9f53347bfd5ee561a3a260da9b63cc10dc5
     public function index()
     {
         $company = Company::where('deleted_at',null)->where('user_id',auth()->user()->id)->first();
@@ -39,7 +33,6 @@ class SettingController extends Controller
      */
     public function store(Request $request)
     {
-<<<<<<< HEAD
         // return $request->file('banner_image');
         $request->validate([
             'name' => 'required',
@@ -48,12 +41,6 @@ class SettingController extends Controller
             
         
             // slug
-=======
-        $request->validate([
-            'name' => 'required',
-            'telephone' => 'required',
-        ]);
->>>>>>> ad7da9f53347bfd5ee561a3a260da9b63cc10dc5
             $slug = Str::slug($request->name);
             $count = Company::where('deleted_at','!=',null)->where('slug', 'LIKE', "{$slug}%")->count();
             $slug = $count ? "{$slug}-{$count}" : $slug;
@@ -86,7 +73,6 @@ class SettingController extends Controller
                 $company->update([
                     'name'=>$request->name,
                     'slug'=>$slug,
-<<<<<<< HEAD
                     'description_uz'=>$request->description_uz,
                     'description_ru'=>$request->description_ru,
                     'description_kr'=>$request->description_kr,
@@ -105,17 +91,6 @@ class SettingController extends Controller
                 return redirect()->route('settings.index')->with('success','Company updated successfully');
             }else{
                 
-=======
-                    'banner_image'=>$fileName_banner,
-                    'logo'=>$fileName,
-                    'telephone'=>$request->telephone,
-                    'instagram'=>$request->instagram,
-                    'telegram'=>$request->telegram,
-                    'address'=>$request->address,
-                ]);
-                return redirect()->back()->with('success','Company updated successfully');
-            }else{
->>>>>>> ad7da9f53347bfd5ee561a3a260da9b63cc10dc5
                 $file_banner = $request->file('banner_image');
                 $fileName_banner = time().'.'.$file_banner->getClientOriginalExtension();
                 $file_banner->move(public_path('images/banner'), $fileName_banner);
@@ -128,7 +103,6 @@ class SettingController extends Controller
                     'user_id' => auth()->user()->id,
                     'name'=>$request->name,
                     'slug'=>$slug,
-<<<<<<< HEAD
                     'description_uz'=>$request->description_uz,
                     'description_ru'=>$request->description_ru,
                     'description_kr'=>$request->description_kr,
@@ -149,17 +123,6 @@ class SettingController extends Controller
             }
         
 
-=======
-                    'banner_image'=>$fileName_banner,
-                    'telephone'=>$request->telephone,
-                    'logo'=>$fileName,
-                    'instagram'=>$request->instagram,
-                    'telegram'=>$request->telegram,     
-                    'address'=>$request->address,
-                ]);
-                return redirect()->back()->with('success','Company created successfully');
-            }
->>>>>>> ad7da9f53347bfd5ee561a3a260da9b63cc10dc5
     }
 
     /**
