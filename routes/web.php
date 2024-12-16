@@ -1,5 +1,9 @@
 <?php
 
+<<<<<<< HEAD
+=======
+use App\Http\Controllers\AllCategoriesController;
+>>>>>>> ad7da9f53347bfd5ee561a3a260da9b63cc10dc5
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ClientController;
@@ -36,13 +40,17 @@ Route::post('/login', [AuthController::class, 'login'])->name('login')->middlewa
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 // resource
+<<<<<<< HEAD
 // role admin permission middleware
 Route::group(['middleware' => ['auth','check.role:Admin']], function () {
+=======
+>>>>>>> ad7da9f53347bfd5ee561a3a260da9b63cc10dc5
     Route::resource('settings', SettingController::class);
     Route::resource('categories', CategoryController::class);
     Route::resource('products', ProductController::class);
     Route::post('/products/is_active', [ProductController::class, 'isActive'])->name('isActive');
     Route::resource('feedback', OpinionController::class);
+<<<<<<< HEAD
     // Route::resource('clients', ClientController::class);
 });
 
@@ -55,3 +63,20 @@ Route::group(['middleware' => ['auth','check.role:Gl_admin']], function () {
 Route::group(['middleware' => ['auth']], function () {
     Route::resource('clients', ClientController::class);
 });
+=======
+   
+
+
+Route::group(['middleware' => ['auth']], function () {
+    Route::resource('clients', ClientController::class);
+});
+
+Route::prefix('admin')
+->middleware(['auth'])
+->group(function () {
+    Route::resource('all-categories', AllCategoriesController::class);
+    Route::post('/get-categories', [AllCategoriesController::class, 'getCategories'])->name('get.categories');
+    Route::resource('companies', CompanyController::class);
+    Route::post('/companies/key/{user}', [CompanyController::class, 'key'])->name('companies.key');
+});
+>>>>>>> ad7da9f53347bfd5ee561a3a260da9b63cc10dc5

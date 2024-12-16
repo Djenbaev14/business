@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('name')->unique();
             $table->string('slug')->unique();
             $table->string('logo')->nullable();
+<<<<<<< HEAD
             $table->longText('description_uz')->nullable();
             $table->longText('description_ru')->nullable();
             $table->longText('description_kr')->nullable();
@@ -31,6 +32,14 @@ return new class extends Migration
             $table->string('youtube')->nullable();
             $table->string('facebook')->nullable();
             $table->string('address')->nullable();
+=======
+            $table->string('banner_image')->nullable();
+            $table->string('telephone')->unique()->nullable();
+            $table->string('telegram')->nullable();
+            $table->string('instagram')->nullable();
+            $table->string('address')->nullable();
+            $table->boolean('is_active')->default(1);
+>>>>>>> ad7da9f53347bfd5ee561a3a260da9b63cc10dc5
             $table->softDeletes();
             $table->timestamps();
         });

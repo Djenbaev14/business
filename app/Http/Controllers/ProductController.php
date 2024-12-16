@@ -34,6 +34,10 @@ class ProductController extends Controller
             'name_uz'=>'required|string|max:255',
             'name_ru'=>'required|string|max:255',
             'name_kr'=>'required|string|max:255',
+<<<<<<< HEAD
+=======
+            'sequence_number'=>'required',
+>>>>>>> ad7da9f53347bfd5ee561a3a260da9b63cc10dc5
             'category_id'=>'required|exists:categories,id',
         ]);
         $photos=[];
@@ -61,6 +65,10 @@ class ProductController extends Controller
             'description_ru'=>$request->description_ru,
             'description_kr'=>$request->description_kr,
             'slug'=>$slug,
+<<<<<<< HEAD
+=======
+            'sequence_number'=>$request->sequence_number,
+>>>>>>> ad7da9f53347bfd5ee561a3a260da9b63cc10dc5
             'price'=>$request->price,
             'unit_id'=>is_numeric($request->unit_id) ? $request->unit_id : null , 
             'photos'=>$photos

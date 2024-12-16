@@ -3,8 +3,13 @@
 @section('title', 'Настройки')
 @section('content')
 
+<<<<<<< HEAD
 <div class="content">
 	<div class="container-xxl">
+=======
+<div class="content-body">
+	<div class="container-fluid">
+>>>>>>> ad7da9f53347bfd5ee561a3a260da9b63cc10dc5
 
 				<div class="py-3 d-flex align-items-sm-center flex-sm-row flex-column">
 						<div class="flex-grow-1">
@@ -41,6 +46,12 @@
                                             
                                         </label>
                                         <input type="file" name="logo" id="logo-upload" accept="image/png, image/webp, image/jpeg,image/jpg" style="display: none;" />
+<<<<<<< HEAD
+=======
+                                        @if($errors->has('logo'))
+                                            <div class="error text-danger">{{ $errors->first('logo') }}</div>
+                                        @endif
+>>>>>>> ad7da9f53347bfd5ee561a3a260da9b63cc10dc5
                                     </div>
                                   </div>
                                   <div class="mb-5">
@@ -48,12 +59,17 @@
                                         <div class="mt-3 mx-3">
                                             <p class="d-flex align-items-top"><svg class="mx-2" width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="11.4998" cy="6.70833" r="0.958333" fill="#5DC983"></circle><path d="M10.5415 9.58366H11.4998V16.292M21.0832 11.5003C21.0832 16.7931 16.7926 21.0837 11.4998 21.0837C6.20711 21.0837 1.9165 16.7931 1.9165 11.5003C1.9165 6.2076 6.20711 1.91699 11.4998 1.91699C16.7926 1.91699 21.0832 6.2076 21.0832 11.5003Z" stroke="#5DC983" stroke-width="1.4375" stroke-linecap="round" stroke-linejoin="round"></path></svg> Если вы хотите отобразить логотип на сайте, мы рекомендуем вам загрузить его 
                                             </p>
+<<<<<<< HEAD
                                                 <img src="{{asset('assets/images/logo.png')}}" width="200px" alt="">
+=======
+                                                <img src="{{asset('logo-image/restaurant_logo.png')}}" width="200px" alt="">
+>>>>>>> ad7da9f53347bfd5ee561a3a260da9b63cc10dc5
                                             </div>
                                     </div>
                                   </div>
                                   
                                 <div class="mb-3">
+<<<<<<< HEAD
                                     <ul class="nav nav-pills nav-justified bg-light rounded shadow-sm" role="tablist">
                                         @foreach (config('app.languages') as $i => $item)
                                             <li class="nav-item mx-2 my-1" role="presentation">
@@ -77,6 +93,8 @@
                                         </div>
                                         @endforeach
                                     </div>
+=======
+>>>>>>> ad7da9f53347bfd5ee561a3a260da9b63cc10dc5
                                     <div id="upload-container-2" >
                                         <label for="logo-upload-2" id="upload-label-2">
                                             @if ($company->banner_image)
@@ -95,6 +113,12 @@
                                             @endif
                                         </label>
                                         <input type="file" name="banner_image" id="logo-upload-2" accept="image/png, image/webp, image/jpeg,image/jpg" style="display: none;" />
+<<<<<<< HEAD
+=======
+                                        @if($errors->has('banner_image'))
+                                            <div class="error text-danger">{{ $errors->first('banner_image') }}</div>
+                                        @endif
+>>>>>>> ad7da9f53347bfd5ee561a3a260da9b63cc10dc5
                                     </div>
                                 </div>
                                 <div class="mb-5">
@@ -102,6 +126,7 @@
                                       <div class="mt-3 mx-3">
                                           <p class="d-flex align-items-top"><svg class="mx-2" width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="11.4998" cy="6.70833" r="0.958333" fill="#5DC983"></circle><path d="M10.5415 9.58366H11.4998V16.292M21.0832 11.5003C21.0832 16.7931 16.7926 21.0837 11.4998 21.0837C6.20711 21.0837 1.9165 16.7931 1.9165 11.5003C1.9165 6.2076 6.20711 1.91699 11.4998 1.91699C16.7926 1.91699 21.0832 6.2076 21.0832 11.5003Z" stroke="#5DC983" stroke-width="1.4375" stroke-linecap="round" stroke-linejoin="round"></path></svg> Если вы хотите показать баннер на сайте, мы рекомендуем вам загрузить его
                                           </p>
+<<<<<<< HEAD
                                               <img src="{{asset('assets/images/image.png')}}" width="200px" alt="">
                                           </div>
                                   </div>
@@ -146,12 +171,33 @@
                                                 <span class="input-group-text" id="inputGroup-sizing-default">+998</span>
                                                 <input name="telephones[]" maxlength="9" placeholder="1234567" value="<?=($company && $company->telephones) ? $company->telephones[1] : ''   ?>" class="form-control" type="tel" />
                                             </div>
+=======
+                                              <img src="{{asset('logo-image/restaurant_banner.png')}}" width="200px" alt="">
+                                          </div>
+                                  </div>
+                                </div>
+                                 
+                                <div class="mb-2">
+                                    <label for="phone" class="form-label">Контактный телефон:</label>
+                                    <div class="row">
+                                        <div class="col-lg-12 col-sm-12 mb-2">
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text" id="inputGroup-sizing-default">+998</span>
+                                                </div>
+                                                <input name="telephone" maxlength="9" placeholder="1234567" value="{{$company->telephone}}" class="form-control" type="tel" />
+                                            </div>
+                                            @if($errors->has('telephone'))
+                                                <div class="error text-danger">{{ $errors->first('telephone') }}</div>
+                                            @endif
+>>>>>>> ad7da9f53347bfd5ee561a3a260da9b63cc10dc5
                                         </div>
                                     </div>
                                 </div>
                                 <div class="mb-3">
                                     <label for="phone" class="form-label">Ссылка на социальные сети:</label>
                                     <div class="row">
+<<<<<<< HEAD
                                         <div class="col-lg-6 col-sm-12 mb-2 mb-2">
                                             <div class="input-group">
                                                 <div class="input-group-text"><img width="20px" src="https://img.icons8.com/ios-filled/50/instagram-new.png" alt="Instagram"></div>
@@ -176,6 +222,29 @@
                                             <div class="input-group">
                                                 <div class="input-group-text"><img width="20px" src="https://img.icons8.com/?size=100&id=25654&format=png&color=000000" alt="youtube"></div>
                                                 <input id="youtube" class="form-control" value="<?=($company) ? $company->youtube : ''   ?>" name="youtube" type="url" placeholder="Youtube"/>
+=======
+                                        <div class="col-lg-12 col-sm-12 mb-2 mb-2">
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text"><img width="20px" src="https://img.icons8.com/ios-filled/50/instagram-new.png" alt="Instagram"></span>
+                                                </div>
+                                                <input id="Instagram" class="form-control" type="url" name="instagram" value="<?=($company) ? $company->instagram : ''   ?>" placeholder="Instagram"/>
+                                            </div>
+                                            @if($errors->has('instagram'))
+                                                <div class="error text-danger">{{ $errors->first('instagram') }}</div>
+                                            @endif
+                                        </div>
+                                        
+                                        <div class="col-lg-12 col-sm-12 mb-2 mb-2">
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text"><img width="20px" src="https://img.icons8.com/ios-filled/50/telegram-app.png" alt="Telegram"></span>
+                                                </div>
+                                                <input id="Telegram" class="form-control" value="<?=($company) ? $company->telegram : ''   ?>" name="telegram" type="url" placeholder="Telegram"/>
+                                                @if($errors->has('telegram'))
+                                                    <div class="error text-danger">{{ $errors->first('telegram') }}</div>
+                                                @endif
+>>>>>>> ad7da9f53347bfd5ee561a3a260da9b63cc10dc5
                                             </div>
                                         </div>
                                         
@@ -184,10 +253,22 @@
                                 <div class="mb-3">
                                     <label for="filial_nomi">Название компании:</label>
                                     <input id="filial_nomi" class="form-control form-control-lg" value="<?=($company) ? $company->name : ''   ?>" type="text" name="name" placeholder="Введите название компании">
+<<<<<<< HEAD
+=======
+                                    @if($errors->has('name'))
+                                        <div class="error text-danger">{{ $errors->first('name') }}</div>
+                                    @endif
+>>>>>>> ad7da9f53347bfd5ee561a3a260da9b63cc10dc5
                                 </div>
                                 <div class="mb-3">
                                     <label for="address">Введите адрес:</label>
                                     <input id="address" class="form-control form-control-lg" value="<?=($company) ? $company->address : ''   ?>" type="text" name="address" placeholder="Введите адрес">
+<<<<<<< HEAD
+=======
+                                    @if($errors->has('address'))
+                                        <div class="error text-danger">{{ $errors->first('address') }}</div>
+                                    @endif
+>>>>>>> ad7da9f53347bfd5ee561a3a260da9b63cc10dc5
                                 </div>
                                 <div class="mb-3">
                                     <input type="submit" class="btn btn-primary btn-lg" value="Сохранение изменений">
@@ -210,6 +291,7 @@
 
 @push('css')
         <!-- Quill css -->
+<<<<<<< HEAD
     <link href="{{asset('assets/libs/quill/quill.core.js')}}" rel="stylesheet" type="text/css" />
     <link href="{{asset('assets/libs/quill/quill.snow.css')}}" rel="stylesheet" type="text/css" />
     <link href="{{asset('assets/libs/quill/quill.bubble.css')}}" rel="stylesheet" type="text/css" />
@@ -313,4 +395,16 @@
                 }
             });
         </script>
+=======
+    {{-- <link href="{{asset('assets/libs/quill/quill.core.js')}}" rel="stylesheet" type="text/css" />
+    <link href="{{asset('assets/libs/quill/quill.snow.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{asset('assets/libs/quill/quill.bubble.css')}}" rel="stylesheet" type="text/css" /> --}}
+    <link href="{{asset('css/logo-upload.css')}}" rel="stylesheet" type="text/css" />
+@endpush
+@push('js')
+        {{-- <script src="https://cdn.ckeditor.com/ckeditor5/41.3.1/super-build/ckeditor.js"></script>
+        <script src="{{asset('assets/js/ckeditor.js')}}"></script> --}}
+        <script src="{{asset('js/logo-upload.js')}}"></script>
+        <script src="{{asset('js/logo-upload2.js')}}"></script>
+>>>>>>> ad7da9f53347bfd5ee561a3a260da9b63cc10dc5
 @endpush
